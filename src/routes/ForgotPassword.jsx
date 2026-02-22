@@ -1,0 +1,105 @@
+import React from 'react'
+import { useState } from "react";
+import {
+  BookOpenText,
+  Mail,
+ 
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import Footer from "../component/Footer";
+import SwiperHook from '../component/SwiperHook';
+
+const ForgotPassword = () => {
+  // all input states
+    const [email, setEmail] = useState("");
+  return (
+    <div>
+      <div className="flex  items-center justify-center bg-gray-100 ">
+        <div className="container  mx-auto px-4 py-8">
+          {/* form */}
+          <div className="lg:flex lg:justify-items-center lg:items-center gap-20 ">
+            {/* form section */}
+            <div className="w-full lg:w-1/2 border border-gray-300 p-3 rounded-md my-2">
+              {/* learnflow logo */}
+
+              <div className="flex items-center ">
+                <Link to="/" className="flex text-2xl ">
+                  <BookOpenText className="h-8 w-10  text-black " />
+                  <div className="flex items-center">
+                    <span className="font-medium text-black">Learn</span>
+                    <span className="text-amber-400 font-extrabold">Flow</span>
+                  </div>
+                </Link>
+              </div>
+              {/* form heading */}
+
+              <div className="mt-1">
+                <p>Enter your account email to reset your password!</p>
+              </div>
+              <form>
+                <div className="space-y-2 mt-2">
+                  {/* email input */}
+                  <div>
+                    <label
+                      className="block text-sm font-medium mb-1 "
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
+                    <div className="flex items-center relative">
+                      <Mail className="h-5 w-4 text-gray-500 absolute left-2 " />
+                      <input
+                        id="email"
+                        type="email"
+                        className="w-full px-7 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2  focus:ring-black  placeholder:top-1/2 placeholder:text-gray-500"
+                        placeholder="You@example"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        autoComplete='off'
+                      />
+                    </div>
+                  </div>
+
+                  {/* submit button */}
+                  <div className="mt-4">
+                    <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800">
+                      Reset password
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-center text-sm py-2">
+                    <Link
+                      to="/login"
+                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                    >
+                      Log In
+                    </Link>
+                    Don't have an account?
+                    <Link
+                      to="/signup"
+                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                    >
+                      Sign up
+                    </Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+            {/* image section */}
+            <div className="hidden lg:block">
+              <div >
+                <SwiperHook />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </div>
+  );
+}
+
+export default ForgotPassword
