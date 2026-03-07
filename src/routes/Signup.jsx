@@ -1,15 +1,23 @@
 import React from 'react'
 import { useState } from 'react';
 import { BookOpenText,EyeOff,Eye,Mail,LockKeyhole,User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../component/Footer';
+import {useAuth} from "../context/AuthContext";
 
 const Signup = () => {
   // all input states
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  // loading state
+  const [loading, setLoading] = useState(false);
+  // error state
+  const [error, setError] = useState()
+
+  
 
   // visible password function and state for password
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +29,39 @@ const Signup = () => {
   const handleVisiblePasswordConfirm = () => {
     setShowPasswordConfirm(!showPasswordConfirm);
   };
+  // imported states from AuthContext
+  const {signup, updateUserProfile} = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if( !displayName || !email || !password || !confirmPassword){
+      return setError("Fill all fields")
+    }
+
+    if(password.trim() !== confirmPassword.trim()){
+      return setError("Password do not match")
+    }
+
+    if(password.length < 8){
+      return setError("Password must be at least 8 characters")
+    }
+
+    try{
+      setLoading(true);
+      await signup(email,password);
+      // username is updated immediately after profile creation
+      await updateUserProfile(displayName);
+      navigate('/dashboard')
+    }catch(err){
+      setError("Failed to create user account: " + (err.message))
+    }finally{
+      setLoading(false)
+    }
+
+  }
 
   return (
     <div>
@@ -29,7 +70,7 @@ const Signup = () => {
           {/* form */}
           <div className="w-full lg:flex justify-items-center items-center">
             {/* form section */}
-            <div className="w-full   border border-gray-300 p-3 rounded-md my-2">
+            <div className="w-full  shadow-xl border border-gray-300 p-3 rounded-md my-2">
               {/* learnflow logo */}
 
               <div className="flex items-center ">
@@ -37,7 +78,7 @@ const Signup = () => {
                   <BookOpenText className="h-8 w-10  text-black " />
                   <div className="flex items-center">
                     <span className="font-medium text-black">Learn</span>
-                    <span className="text-amber-400 font-extrabold">Flow</span>
+                    <span className="text-amber-500 font-extrabold">Flow</span>
                   </div>
                 </Link>
               </div>
@@ -47,7 +88,13 @@ const Signup = () => {
                 <p>Welcome!</p>
                 <h2 className="text-2xl font-bold">Sign up to LearnFlow</h2>
               </div>
-              <form>
+              <form onSubmit={handleSubmit}>
+                {/* displayed erros on the form */}
+                {error && (
+                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-2 mt-2">
                   {/* email input */}
                   <div>
@@ -66,11 +113,11 @@ const Signup = () => {
                         placeholder="You@example"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                       />
                     </div>
                   </div>
-                  {/* for username */}
+                  {/* for username/displayName */}
                   <div>
                     <label
                       className="block text-sm font-medium mb-1"
@@ -83,15 +130,14 @@ const Signup = () => {
 
                       <input
                         className="w-full px-7 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black placeholder:text-gray-500"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={displayName}
+                        onChange={(e) => setDisplayName(e.target.value)}
                         type="text"
                         id="username"
                         name="username"
-                        placeholder="Username"
-                        required
-                        autoComplete='on'
-                        autoCorrect='on'
+                        placeholder="John Doe"
+                        autoComplete="on"
+                        autoCorrect="on"
                       />
                     </div>
                   </div>
@@ -111,10 +157,9 @@ const Signup = () => {
                         type={showPassword ? "text" : "password"}
                         className="w-full px-7 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2  focus:ring-black  placeholder:absolute placeholder:top-2.5 placeholder:text-gray-500 placeholder:text-2xl"
                         placeholder="********"
-                        required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                       />
                       <div
                         onClick={handleVisiblePassword}
@@ -145,10 +190,9 @@ const Signup = () => {
                         type={showPasswordConfirm ? "text" : "password"}
                         className="w-full px-7 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2  focus:ring-black placeholder:text-gray-500 placeholder:text-2xl placeholder:absolute placeholder:top-2.5"
                         placeholder="********"
-                        required
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                       />
                       <div
                         onClick={handleVisiblePasswordConfirm}
@@ -163,11 +207,48 @@ const Signup = () => {
                       </div>
                     </div>
                   </div>
+                  {/* terms agreemeant */}
+                  <div className="flex items-start ">
+                    <label
+                      htmlFor="remember-alternative"
+                      className="flex items-center "
+                    >
+                      <input
+                        id="remember-alternative"
+                        type="checkbox"
+                        value=""
+                        className="accent-amber-400 rounded-xs bg-neutral-secondary-medium "
+                        autoComplete="off"
+                        required
+                      />
+                      <p className="ms-2 text-sm font-medium text-heading select-none">
+                        I agree with the{" "}
+                        <a href="#" className="text-amber-500 font-bold hover:underline">
+                          terms and conditions
+                        </a>
+                      </p>
+                    </label>
+                  </div>
 
                   {/* submit button */}
-                  <div className="mt-4">
-                    <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800">
-                      Register
+                  <div className="">
+                    <button
+                      className="w-full bg-black text-white py-2
+                      rounded-md hover:opacity-80 transition-colors focus:outline-none
+                      focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50
+                      disabled:cursor-not-allowed mt-4 cursor-pointer"
+                      type="submit"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <div className='flex justify-center items-center gap-1'>
+                          {" "}
+                          <ClipLoader color="#ffff" size={20} loading={true} />
+                          <p >Creating account...</p>
+                        </div>
+                      ) : (
+                        "Register"
+                      )}
                     </button>
                   </div>
                 </div>
@@ -176,7 +257,7 @@ const Signup = () => {
                     Already have an account?
                     <Link
                       to="/login"
-                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                      className="text-amber-500 font-bold hover:underline px-1 hover:opacity-70"
                     >
                       Sign In
                     </Link>

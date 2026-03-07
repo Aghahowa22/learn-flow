@@ -67,9 +67,15 @@ const Pricing = () => {
                 <div className="flex items-center">
                   <h2 className="py-2 text-6xl">15$</h2>
                   <p className="px-3">USD Per Month.</p>
+                  <div className="bg-linear-to-r from-zinc-900 to-zinc-600  px-6 py-2 rounded-xl text-amber-50">
+                    <p>Popular</p>
+                  </div>
                 </div>
                 <h4 className="text-2xl py-2">Professional</h4>
-                <p className="py-3">Perfect for professionals and teams who want to take<br></br> their learning to the next level.</p>
+                <p className="py-3">
+                  Perfect for professionals and teams who want to take<br></br>{" "}
+                  their learning to the next level.
+                </p>
                 <div className="">
                   <Link
                     to="/signup"
@@ -120,8 +126,9 @@ const Pricing = () => {
                 </div>
                 <h4 className="text-2xl py-2">Masters</h4>
                 <p className="py-3">
-                  Designed for businesses and organizations that require<br></br>  advanced
-                  features and support to manage their learning<br></br> effectively.
+                  Designed for businesses and organizations that require
+                  <br></br> advanced features and support to manage their
+                  learning<br></br> effectively.
                 </p>
                 <div>
                   <Link
@@ -135,7 +142,9 @@ const Pricing = () => {
                 <div className="grid gap-5 py-4">
                   <div className="flex items-center space-x-2">
                     <CircleCheckBig />
-                    <p>Unlimited access to all learning materials and courses</p>
+                    <p>
+                      Unlimited access to all learning materials and courses
+                    </p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <CircleCheckBig />

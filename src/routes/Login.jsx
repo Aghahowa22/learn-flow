@@ -1,14 +1,26 @@
-import React from 'react'
-import { useState } from 'react';
-import { BookOpenText,EyeOff,Eye,Mail,LockKeyhole,User } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Footer from '../component/Footer';
+import React from "react";
+import { useState } from "react";
+import {
+  BookOpenText,
+  EyeOff,
+  Eye,
+  Mail,
+  LockKeyhole,
+  User,
+} from "lucide-react";
+import { ClipLoader } from "react-spinners";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "../component/Footer";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   // all input states
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // loading and error state
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   // checkbox state and check box function
   const [check, setCheck] = useState(false);
@@ -20,6 +32,33 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleVisiblePassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  // imported Authcontext
+  const { login, googleLogin } = useAuth();
+  const navigate = useNavigate();
+
+  // login function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!email ) {
+      return setError("Enter email");
+    }
+    if (!password) {
+      return setError("Enter password");
+    }
+
+    try {
+      setLoading(true);
+      await login(email, password);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Failed to log in user: " + err.meaasge);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -327,7 +366,7 @@ const Login = () => {
               </svg>
             </div>
             {/* form section */}
-            <div className="w-full  border border-gray-300 p-3 rounded-md my-2">
+            <div className="w-full shadow-xl border border-gray-300 p-3 rounded-md my-2">
               {/* learnflow logo */}
 
               <div className="flex items-center ">
@@ -335,7 +374,7 @@ const Login = () => {
                   <BookOpenText className="h-8 w-10  text-black " />
                   <div className="flex items-center">
                     <span className="font-medium text-black">Learn</span>
-                    <span className="text-amber-400 font-extrabold">Flow</span>
+                    <span className="text-amber-500 font-extrabold">Flow</span>
                   </div>
                 </Link>
               </div>
@@ -345,7 +384,12 @@ const Login = () => {
                 <p>Continue your learning journey!</p>
                 <h2 className="text-2xl font-bold">Sign in to LearnFlow</h2>
               </div>
-              <form>
+              <form onSubmit={handleSubmit}>
+                {error && (
+                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-2 mt-2">
                   {/* email input */}
                   <div>
@@ -368,29 +412,7 @@ const Login = () => {
                       />
                     </div>
                   </div>
-                  {/* for username */}
-                  {/* <div>
-                    <label
-                      className="block text-sm font-medium mb-1"
-                      htmlFor="username"
-                    >
-                      Username
-                    </label>
-                    <div className="flex items-center relative">
-                      <User className="h-5 w-4 absolute left-2 text-gray-500" />
 
-                      <input
-                        className="w-full px-7 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="Username"
-                        required
-                      />
-                    </div>
-                  </div> */}
                   {/* password */}
                   <div>
                     <label
@@ -407,7 +429,6 @@ const Login = () => {
                         type={showPassword ? "text" : "password"}
                         className="w-full px-7 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2  focus:ring-black placeholder:absolute placeholder:top-2.5 placeholder:text-gray-500 placeholder:text-2xl"
                         placeholder="********"
-                        required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         autoComplete="off"
@@ -444,7 +465,7 @@ const Login = () => {
                     <div>
                       <Link
                         to="/forgotpassword"
-                        className="text-sm font-medium text-amber-400 cursor-pointer hover:opacity-70 hover:underline"
+                        className="text-sm font-bold text-amber-500 cursor-pointer hover:opacity-70 hover:underline"
                       >
                         forgot password?
                       </Link>
@@ -452,9 +473,65 @@ const Login = () => {
                   </div>
                   {/* submit button */}
                   <div className="mt-4">
-                    <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800">
-                      Sign In
+                    <button
+                      className="w-full bg-black text-white py-2
+                      rounded-md hover:opacity-80 transition-colors focus:outline-none
+                      focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50
+                      disabled:cursor-not-allowed mt-4 cursor-pointer"
+                      type="submit"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <div className="flex justify-center items-center gap-1">
+                          {" "}
+                          <ClipLoader color="#ffff" size={20} loading={true} />
+                          <p>Signing In...</p>
+                        </div>
+                      ) : (
+                        "Sign In"
+                      )}
                     </button>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between my-4">
+                  <span className="w-1/3 border-b dark:border-gray-600 lg:w-1/3"></span>
+
+                  <p className="text-xs  text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">
+                    or login with Social Media
+                  </p>
+
+                  <span className="w-1/3 border-b dark:border-gray-400 lg:w-1/3"></span>
+                </div>
+                {/* google login service */}
+                <div className="py-1 cursor-pointer" onClick={googleLogin}>
+                  <div className="w-full flex justify-center items-center space-x-2 p-2 border border-gray-300 rounded-lg hover:opacity-65">
+                    {/* google img svg */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 48 48"
+                    >
+                      <path
+                        fill="#FFC107"
+                        d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+                      ></path>
+                      <path
+                        fill="#FF3D00"
+                        d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+                      ></path>
+                      <path
+                        fill="#4CAF50"
+                        d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+                      ></path>
+                      <path
+                        fill="#1976D2"
+                        d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+                      ></path>
+                    </svg>
+                    <p>Sign In with Google</p>
                   </div>
                 </div>
                 <div>
@@ -462,9 +539,9 @@ const Login = () => {
                     Don't have an account?
                     <Link
                       to="/signup"
-                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                      className="text-amber-500 hover:underline px-1 hover:opacity-70 font-bold"
                     >
-                      Sign Up
+                      Enroll now
                     </Link>
                   </p>
                 </div>
@@ -480,4 +557,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

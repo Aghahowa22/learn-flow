@@ -5,13 +5,46 @@ import {
   Mail,
  
 } from "lucide-react";
+import { ClipLoader } from 'react-spinners';
 import { Link } from "react-router-dom";
 import Footer from "../component/Footer";
 import SwiperHook from '../component/SwiperHook';
+import { useAuth } from '../context/AuthContext';
 
 const ForgotPassword = () => {
   // all input states
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [success, setSuccess] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading]= useState(false);
+
+  const {passwordReset} = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+
+    if(!email){
+      return setError(" Enter email ")
+    }
+
+    try{
+      setSuccess('')
+      setLoading(true);
+      await passwordReset(email);
+      setSuccess('A reset link has been sent to your email, check your inbox or spam folder for reset link')
+      setTimeout(() => setSuccess (), 4000)
+      setEmail("")
+
+    }catch(err){
+      setError("Failed to send link to email: " + (err.message))
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  
   return (
     <div>
       <div className="flex  items-center justify-center bg-gray-100 ">
@@ -19,7 +52,7 @@ const ForgotPassword = () => {
           {/* form */}
           <div className="lg:flex lg:justify-items-center lg:items-center gap-20 ">
             {/* form section */}
-            <div className="w-full lg:w-1/2 border border-gray-300 p-3 rounded-md my-2">
+            <div className="w-full shadow-xl lg:w-1/2 border border-gray-300 p-3 rounded-md my-2">
               {/* learnflow logo */}
 
               <div className="flex items-center ">
@@ -27,7 +60,7 @@ const ForgotPassword = () => {
                   <BookOpenText className="h-8 w-10  text-black " />
                   <div className="flex items-center">
                     <span className="font-medium text-black">Learn</span>
-                    <span className="text-amber-400 font-extrabold">Flow</span>
+                    <span className="text-amber-500 font-extrabold">Flow</span>
                   </div>
                 </Link>
               </div>
@@ -36,7 +69,21 @@ const ForgotPassword = () => {
               <div className="mt-1">
                 <p>Enter your account email to reset your password!</p>
               </div>
-              <form>
+              <form onSubmit={handleSubmit}>
+                {/* error message didsplay */}
+                {error && (
+                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
+                    {error}
+                  </div>
+                )}
+
+                {/* displayed success message */}
+                {success && (
+                  <div className="bg-green-50 text-green-700 p-2 rounded-md mb-4 text-sm">
+                    {success}
+                  </div>
+                )}
+
                 <div className="space-y-2 mt-2">
                   {/* email input */}
                   <div>
@@ -55,15 +102,30 @@ const ForgotPassword = () => {
                         placeholder="You@example"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                       />
                     </div>
                   </div>
 
                   {/* submit button */}
                   <div className="mt-4">
-                    <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800">
-                      Reset password
+                    <button
+                      className="w-full bg-black text-white py-2
+                      rounded-md hover:opacity-80 transition-colors focus:outline-none
+                      focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50
+                      disabled:cursor-not-allowed mt-4 cursor-pointer"
+                      type="submit"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <div className="flex justify-center items-center gap-1">
+                          {" "}
+                          <ClipLoader color="#ffff" size={20} loading={true} />
+                          <p>Sending link to your email...</p>
+                        </div>
+                      ) : (
+                        "Reset password"
+                      )}
                     </button>
                   </div>
                 </div>
@@ -71,16 +133,16 @@ const ForgotPassword = () => {
                   <p className="text-center text-sm py-2">
                     <Link
                       to="/login"
-                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                      className="text-amber-500 font-bold hover:underline px-1 hover:opacity-70"
                     >
-                      Log In
+                      Sign In
                     </Link>
                     Don't have an account?
                     <Link
                       to="/signup"
-                      className="text-amber-400 hover:underline px-1 hover:opacity-70"
+                      className="text-amber-500 font-bold hover:underline px-1 hover:opacity-70"
                     >
-                      Sign up
+                      Enroll Now
                     </Link>
                   </p>
                 </div>
@@ -88,7 +150,7 @@ const ForgotPassword = () => {
             </div>
             {/* image section */}
             <div className="hidden lg:block">
-              <div >
+              <div>
                 <SwiperHook />
               </div>
             </div>

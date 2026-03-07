@@ -1,4 +1,4 @@
-import { MoveRight,BriefcaseBusiness,User,Layers } from "lucide-react";
+import { MoveRight, BriefcaseBusiness, User, Layers } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 // hero setion img
@@ -52,17 +52,17 @@ const Landing = () => {
             <div className=" grid gap-4 md:flex lg:flex ">
               <Link
                 to="/signup"
-                className="text-center text-amber-50 bg-black p-3 rounded-full hover:opacity-75"
+                className="text-center text-amber-50 bg-black p-3 rounded-lg hover:opacity-75"
               >
                 Get 6 months free
               </Link>
               <Link
                 to="/login"
-                className="border border-amber-300 p-3 mx-4 rounded-full hover:opacity-60"
+                className="border border-amber-300 p-3 mx-4 rounded-lg hover:opacity-60"
               >
                 <span className="flex items-center gap-3 text-amber-300">
-                  <MoveRight className="text-amber-300" />
                   Continue learning
+                  <MoveRight className="text-amber-300" />
                 </span>
               </Link>
             </div>
@@ -71,7 +71,34 @@ const Landing = () => {
 
         {/* student image section */}
         <div className="">
-          <div className=" relative flex justify-center gap-4 py-8">
+          <div className="flex items-center justify-center">
+            <img
+              className="h-16 w-16 -mx-2.5 ring ring-white dark:ring-gray-900 rounded-full object-cover"
+              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
+              alt=""
+            />
+            <img
+              className="h-16 w-16 -mx-2.5 ring ring-white dark:ring-gray-900 rounded-full object-cover"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=687&h=687&q=80"
+              alt=""
+            />
+            <img
+              className="h-16 w-16 -mx-2.5 ring ring-white dark:ring-gray-900 rounded-full object-cover"
+              src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=686&h=686&q=80"
+              alt=""
+            />
+            <img
+              className="h-16 w-16 -mx-2.5 ring ring-white dark:ring-gray-900 rounded-full object-cover"
+              src="https://images.unsplash.com/photo-1485178575877-1a13bf489dfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=1401&h=1401&q=80"
+              alt=""
+            />
+            <img
+              className="h-16 w-16 -mx-2.5 ring ring-white dark:ring-gray-900 rounded-full object-cover"
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=80"
+              alt=""
+            />
+          </div>
+          {/* <div className=" relative flex justify-center gap-4 py-8">
             <img
               src={HumanImg1}
               alt="Human 1"
@@ -87,7 +114,7 @@ const Landing = () => {
               alt="Human 3"
               className="  w-20 h-20 border-2 border-amber-50 rounded-full object-cover"
             />
-          </div>
+          </div> */}
           <p className="text-md text-center md:text-lg font-normal py-4 text-amber-50">
             Join thousands of student to start coding now!
           </p>
