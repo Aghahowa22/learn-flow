@@ -11,10 +11,10 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// main dashboard navigation bar
-const Dashboard = () => {
+// repeating dashboard nav side bar on the user profile route large screen only
+const UserProfile = () => {
   // dashboard active element states
-  const [selectedCategory, setSelectedCategory] = useState("dashboard");
+  const [selectedCategory, setSelectedCategory] = useState("");
   // all variable for link routes active state
   const isDashboard = selectedCategory === "dashboard";
   const isCourses = selectedCategory === "courses";
@@ -61,7 +61,6 @@ const Dashboard = () => {
                 <Link
                   to="/courses"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
-                  onClick={removeDashBoard}
                 >
                   <BookOpen size={20} />
                   <span className="flex-1 ms-3 whitespace-nowrap">Courses</span>
@@ -72,9 +71,8 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/projects"
+                  to="/project"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
-                  onClick={removeDashBoard}
                 >
                   <AppWindow size={20} />
                   <span className="flex-1 ms-3 whitespace-nowrap">
@@ -87,9 +85,8 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/coursebuilder"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
-                  onClick={removeDashBoard}
                 >
                   <PencilLine size={20} />
                   <span className="flex-1 ms-3 whitespace-nowrap">
@@ -100,9 +97,8 @@ const Dashboard = () => {
 
               <li>
                 <Link
-                  to="/calender"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
-                  onClick={removeDashBoard}
                 >
                   <CalendarDays size={20} />
                   <span className="flex-1 ms-3 whitespace-nowrap">
@@ -183,7 +179,7 @@ const Dashboard = () => {
                 className={`categories ${isDashboard ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="#"
+                  to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <House size={20} />
@@ -294,11 +290,12 @@ const Dashboard = () => {
       </div>
       <div className=" ml-5 p-4 md:mt-18 md:ml-64">
         <div>
-          Welcome to dashboard jsdbfjdfbkjsdnfjsd iofjbpwfjpwneg njinineijrg
+          Welcome to user profile mgeojge osdnigonoign kneoigneoring
+          keonrgieornger
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default UserProfile;

@@ -11,17 +11,16 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// main dashboard navigation bar
-const Dashboard = () => {
+// repeating dashboard side nav bar UI on the caourse builber route large screen only
+const CourseBuilder = () => {
   // dashboard active element states
-  const [selectedCategory, setSelectedCategory] = useState("dashboard");
+  const [selectedCategory, setSelectedCategory] = useState("coursebuilder");
   // all variable for link routes active state
   const isDashboard = selectedCategory === "dashboard";
   const isCourses = selectedCategory === "courses";
   const isProjects = selectedCategory === "projects";
   const isCourseBuilder = selectedCategory === "coursebuilder";
   const isCalender = selectedCategory === "calender";
-
   // import useAuth from auth context
   const { currentUser } = useAuth();
   // dashboard menu toggle mobile view states and function
@@ -87,7 +86,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/coursebuilder"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                   onClick={removeDashBoard}
                 >
@@ -183,7 +182,7 @@ const Dashboard = () => {
                 className={`categories ${isDashboard ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="#"
+                  to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <House size={20} />
@@ -223,11 +222,11 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li
-                onClick={() => setSelectedCategory("coursebuilder")}
+                onClick={() => setSelectedCategory("coursebuilber")}
                 className={`categories ${isCourseBuilder ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="/coursebuilder"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <PencilLine size={20} />
@@ -292,13 +291,15 @@ const Dashboard = () => {
         </aside>
         {/* dashdoard body */}
       </div>
-      <div className=" ml-5 p-4 md:mt-18 md:ml-64">
-        <div>
-          Welcome to dashboard jsdbfjdfbkjsdnfjsd iofjbpwfjpwneg njinineijrg
+      <div>
+        <div className=" ml-5 p-4 md:mt-18 md:ml-64">
+          <div>
+            Welcome to Course Builder kjergiehriguherg erjgeoirguierg ejirghuerg
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default CourseBuilder;

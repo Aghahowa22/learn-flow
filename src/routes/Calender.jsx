@@ -11,10 +11,10 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// main dashboard navigation bar
-const Dashboard = () => {
+// repeated dashboard side navigation bar on the calender route large screen only
+const Calender = () => {
   // dashboard active element states
-  const [selectedCategory, setSelectedCategory] = useState("dashboard");
+  const [selectedCategory, setSelectedCategory] = useState("calender");
   // all variable for link routes active state
   const isDashboard = selectedCategory === "dashboard";
   const isCourses = selectedCategory === "courses";
@@ -100,7 +100,7 @@ const Dashboard = () => {
 
               <li>
                 <Link
-                  to="/calender"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
                   onClick={removeDashBoard}
                 >
@@ -183,7 +183,7 @@ const Dashboard = () => {
                 className={`categories ${isDashboard ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="#"
+                  to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <House size={20} />
@@ -242,7 +242,7 @@ const Dashboard = () => {
                 className={`categories ${isCalender ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="/calender"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
                 >
                   <CalendarDays size={20} />
@@ -294,11 +294,12 @@ const Dashboard = () => {
       </div>
       <div className=" ml-5 p-4 md:mt-18 md:ml-64">
         <div>
-          Welcome to dashboard jsdbfjdfbkjsdnfjsd iofjbpwfjpwneg njinineijrg
+          Welcome to calender wkndfowfwef wjnefkwbenfgjwnegw jwngfjwegnwjeg
+          jkwnegklwnegkw kiwengf
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Calender;

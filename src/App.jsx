@@ -1,7 +1,7 @@
 import {} from "react";
 import Navbar from "./component/Navbar";
 import { Route, Routes, Navigate, replace, Link } from "react-router-dom";
-import { BookOpenText } from "lucide-react";
+import { BookOpenText, Calendar } from "lucide-react";
 import Landing from "./routes/Landing";
 import About from "./routes/About";
 import Pricing from "./routes/Pricing";
@@ -12,7 +12,12 @@ import Features from "./routes/Features";
 import Dashboard from "./routes/Dashboard";
 import { useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./component/ProtectedRoute";
-import Signout from "./routes/Signout";
+import Courses from "./routes/Courses";
+import Billing from "./routes/Billing";
+import UserProfile from "./routes/UserProfile";
+import CourseBuilder  from "./routes/CourseBuilder";
+import Projects from "./routes/Projects";
+import Calender from "./routes/Calender";
 
 function App() {
   // imported state from AuthContext
@@ -101,13 +106,68 @@ function App() {
             </ProtectedRoute>
           }
         />
-        {/* protected route on the sign out route */}
+        {/* protected route on the courses route */}
         <Route
-          path="/signout"
+          path="/courses"
           element={
             <ProtectedRoute>
-              <div >
-                <Signout/>
+              <div>
+                <Courses />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the  projects */}
+        <Route
+          path="/projects"
+          element={
+            <ProtectedRoute>
+              <div>
+                <Projects />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the course-builder route */}
+        <Route
+          path="/coursebuilder"
+          element={
+            <ProtectedRoute>
+              <div>
+                <CourseBuilder />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the calender route */}
+        <Route
+          path="/calender"
+          element={
+            <ProtectedRoute>
+              <div>
+                <Calender />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the user-profile route */}
+        <Route
+          path="/userprofile"
+          element={
+            <ProtectedRoute>
+              <div>
+                <UserProfile />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the billing route */}
+        <Route
+          path="/billing"
+          element={
+            <ProtectedRoute>
+              <div>
+                <Billing />
               </div>
             </ProtectedRoute>
           }

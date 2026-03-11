@@ -4,10 +4,10 @@ import {
   BookOpenText,
   Menu,
   X,
-  User,
+  CreditCard,
   LogOut,
   EllipsisVertical,
-  Trash,
+  CircleUser,
 } from "lucide-react";
 import Modal from "../component/Modal";
 import { useAuth } from "../context/AuthContext";
@@ -41,6 +41,9 @@ const Navbar = () => {
   const toggleMenu = (e) => {
     setIsOpen(!isOpen);
   };
+    const removeDropNavbar = (e) => {
+      setIsOpen(false);
+    };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -71,7 +74,7 @@ const Navbar = () => {
     }
   };
 
-  //  navbar content mobile view
+  //  navbar content mobile view display
   const content = (
     <>
       <div
@@ -123,7 +126,7 @@ const Navbar = () => {
             </div>
           </div>
           <ul className="p-2 text-sm text-body font-medium">
-            <li>
+            {/* <li>
               <Link
                 to="/dashboard"
                 onClick={removeUserProfile}
@@ -131,31 +134,28 @@ const Navbar = () => {
               >
                 Dashboard
               </Link>
+            </li> */}
+            <li>
+              <Link
+                to="/userprofile"
+                className="flex items-center gap-2  w-full p-2 hover:bg-gray-300 hover:text-heading rounded-md"
+                onClick={removeDropNavbar}
+              >
+                <CircleUser className="justify-center items-center w-4 h-4" />
+                <span className="font-medium">Profile</span>
+              </Link>
             </li>
             <li>
               <Link
-                to="#"
-                className="block w-full p-2 hover:bg-gray-300 hover:text-heading rounded-md"
+                to="/billing"
+                className="flex items-center gap-2  w-full p-2 hover:bg-gray-300 hover:text-heading rounded-md"
+                onClick={removeDropNavbar}
               >
-                Profile Settings
+                <CreditCard className="justify-center items-center w-4 h-4" />
+                <span className="font-medium">Billing</span>
               </Link>
             </li>
-            {/* <li>
-              <Link
-                to="#"
-                className="block w-full p-2 hover:bg-gray-200 hover:text-heading rounded-md"
-              >
-                Courses
-              </Link>
-            </li> */}
-            {/* <li>
-              <Link
-                to="#"
-                className="block w-full p-2 hover:bg-gray-200 hover:text-heading rounded-md"
-              >
-                Projects
-              </Link>
-            </li> */}
+          
             {/* modal popup display to allow user logout */}
             <li>
               <button
@@ -201,14 +201,14 @@ const Navbar = () => {
       </div>
     </>
   );
-
+  // navigation links
   return (
     <nav>
       <div>
         <div
           className={
             currentUser
-              ? "h-10vh flex justify-between px-5 lg:px-20 py-4 bg-gray-100"
+              ? "fixed z-50 w-full  flex justify-between px-3 lg:px-5 py-4 bg-gray-100"
               : "h-10vh flex justify-between px-5 lg:px-20 py-4 bg-zinc-900"
           }
         >
@@ -240,24 +240,26 @@ const Navbar = () => {
             <>
               <div className="flex space-x-4 justify-center items-center overflow-x-hidden">
                 <div className="flex items-center text-sm text-gray-600">
-                  <div class="bg-white p-2 rounded-xl flex items-center gap-2.5">
-                    <div class="font-medium text-heading">
-                      <span className="hidden text-sm md:inline">
-                        {currentUser.displayName}
-                      </span>{" "}
-                      <div class="hidden md:block text-sm font-normal text-body">
-                        student
-                      </div>
-                    </div>
-                 
-                    <div class="relative">
+                  <div className="bg-white p-2 rounded-xl flex items-center gap-2.5">
+                    {/* user profile photo */}
+                    <div className="relative">
                       <img
                         className="w-10 h-10 rounded-full"
                         src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
                         alt="profile-photo"
                       />
-                      <span class="bottom-0 left-7 absolute  w-3 h-3 bg-green-600 border-2 border-amber-50 rounded-full"></span>
+                      <span className="bottom-0 left-7 absolute  w-3 h-3 bg-green-600 border-2 border-amber-50 rounded-full"></span>
                     </div>
+                    {/* user profile name */}
+                    <div className="font-medium text-heading">
+                      <span className="hidden text-sm md:inline">
+                        {currentUser.displayName}
+                      </span>{" "}
+                      <div className="hidden md:block text-sm font-normal text-body">
+                        student
+                      </div>
+                    </div>
+
                     {/* user profile drop down */}
                     <div>
                       <div ref={dropdownRef}>
@@ -300,6 +302,7 @@ const Navbar = () => {
                   </Link>
                 </ul>
               </div>
+              {/* mobile view click */}
               <div className="md:hidden">{click && content}</div>
               <button
                 onClick={handleClick}

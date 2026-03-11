@@ -11,17 +11,16 @@ import {
   Menu,
   X,
 } from "lucide-react";
-// main dashboard navigation bar
-const Dashboard = () => {
+// repeating dashboard side nav bar UI large screen only
+const Courses = () => {
   // dashboard active element states
-  const [selectedCategory, setSelectedCategory] = useState("dashboard");
+  const [selectedCategory, setSelectedCategory] = useState("courses");
   // all variable for link routes active state
   const isDashboard = selectedCategory === "dashboard";
   const isCourses = selectedCategory === "courses";
   const isProjects = selectedCategory === "projects";
   const isCourseBuilder = selectedCategory === "coursebuilder";
   const isCalender = selectedCategory === "calender";
-
   // import useAuth from auth context
   const { currentUser } = useAuth();
   // dashboard menu toggle mobile view states and function
@@ -51,7 +50,6 @@ const Dashboard = () => {
                 <Link
                   to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
-                  onClick={removeDashBoard}
                 >
                   <House size={20} />
                   <span className="ms-3">Dashboard</span>
@@ -59,9 +57,8 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to="/courses"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
-                  onClick={removeDashBoard}
                 >
                   <BookOpen size={20} />
                   <span className="flex-1 ms-3 whitespace-nowrap">Courses</span>
@@ -183,7 +180,7 @@ const Dashboard = () => {
                 className={`categories ${isDashboard ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="#"
+                  to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <House size={20} />
@@ -195,7 +192,7 @@ const Dashboard = () => {
                 className={`categories ${isCourses ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
-                  to="/courses"
+                  to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
                 >
                   <BookOpen size={20} />
@@ -223,7 +220,7 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li
-                onClick={() => setSelectedCategory("coursebuilder")}
+                onClick={() => setSelectedCategory("coursebuilber")}
                 className={`categories ${isCourseBuilder ? "bg-gray-300 rounded-lg" : ""}`}
               >
                 <Link
@@ -292,13 +289,16 @@ const Dashboard = () => {
         </aside>
         {/* dashdoard body */}
       </div>
-      <div className=" ml-5 p-4 md:mt-18 md:ml-64">
-        <div>
-          Welcome to dashboard jsdbfjdfbkjsdnfjsd iofjbpwfjpwneg njinineijrg
+      <div>
+        <div className=" ml-5 p-4 md:mt-18 md:ml-64">
+          <div>
+            Welcome to Courses vnjwdkvbjwkg;bwjrg;nejrg erngkeo;rgieorg
+            ejrigejrgliebrgij jerginpeiu
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Courses;
