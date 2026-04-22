@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
-import {
-  BookOpenText,
-  Mail,
- 
-} from "lucide-react";
-import { ClipLoader } from 'react-spinners';
+import { BookOpenText, Mail, AlertCircle, CheckCircle2 } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import Footer from "../component/Footer";
-import SwiperHook from '../component/SwiperHook';
-import { useAuth } from '../context/AuthContext';
+import SwiperHook from "../component/SwiperHook";
+import { useAuth } from "../context/AuthContext";
 
 const ForgotPassword = () => {
   // all input states
@@ -17,34 +13,34 @@ const ForgotPassword = () => {
 
   const [success, setSuccess] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading]= useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const {passwordReset} = useAuth();
+  const { passwordReset } = useAuth();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
+    e.preventDefault();
+    setError("");
 
-    if(!email){
-      return setError(" Enter email ")
+    if (!email) {
+      return setError(" Enter email ");
     }
 
-    try{
-      setSuccess('')
+    try {
+      setSuccess("");
       setLoading(true);
       await passwordReset(email);
-      setSuccess('A reset link has been sent to your email, check your inbox or spam folder for reset link')
-      setTimeout(() => setSuccess (), 4000)
-      setEmail("")
-
-    }catch(err){
-      setError("Failed to send link to email: " + (err.message))
-    }finally{
+      setSuccess(
+        "Successfully sent to your email, check your inbox or spam folder for reset link",
+      );
+      setTimeout(() => setSuccess(), 4000);
+      setEmail("");
+    } catch (err) {
+      setError("Failed to send link to email: " + err.message);
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
-  
   return (
     <div>
       <div className="flex  items-center justify-center bg-gray-100 ">
@@ -72,15 +68,17 @@ const ForgotPassword = () => {
               <form onSubmit={handleSubmit}>
                 {/* error message didsplay */}
                 {error && (
-                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
-                    {error}
+                  <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                    <span className="text-red-800 text-sm">{error}</span>
                   </div>
                 )}
 
                 {/* displayed success message */}
                 {success && (
-                  <div className="bg-green-50 text-green-700 p-2 rounded-md mb-4 text-sm">
-                    {success}
+                  <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-green-800 text-sm">{success}</span>
                   </div>
                 )}
 
@@ -162,6 +160,6 @@ const ForgotPassword = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ForgotPassword
+export default ForgotPassword;

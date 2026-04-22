@@ -1,10 +1,18 @@
-import React from 'react'
-import { useState } from 'react';
-import { BookOpenText,EyeOff,Eye,Mail,LockKeyhole,User } from 'lucide-react';
-import { ClipLoader } from 'react-spinners';
-import { Link, useNavigate } from 'react-router-dom';
-import Footer from '../component/Footer';
-import {useAuth} from "../context/AuthContext";
+import React from "react";
+import { useState } from "react";
+import {
+  BookOpenText,
+  EyeOff,
+  Eye,
+  Mail,
+  LockKeyhole,
+  User,
+  AlertCircle,
+} from "lucide-react";
+import { ClipLoader } from "react-spinners";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "../component/Footer";
+import { useAuth } from "../context/AuthContext";
 
 const Signup = () => {
   // all input states
@@ -15,9 +23,7 @@ const Signup = () => {
   // loading state
   const [loading, setLoading] = useState(false);
   // error state
-  const [error, setError] = useState()
-
-  
+  const [error, setError] = useState();
 
   // visible password function and state for password
   const [showPassword, setShowPassword] = useState(false);
@@ -30,38 +36,39 @@ const Signup = () => {
     setShowPasswordConfirm(!showPasswordConfirm);
   };
   // imported states from AuthContext
-  const {signup, updateUserProfile} = useAuth();
+  const { signup, updateUserProfile, verifyUserEmail } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
-    if( !displayName || !email || !password || !confirmPassword){
-      return setError("Fill all fields")
+    if (!displayName || !email || !password || !confirmPassword) {
+      return setError("Fill all fields");
     }
 
-    if(password.trim() !== confirmPassword.trim()){
-      return setError("Password do not match")
+    if (password.trim() !== confirmPassword.trim()) {
+      return setError("Password do not match");
     }
 
-    if(password.length < 8){
-      return setError("Password must be at least 8 characters")
+    if (password.length < 8) {
+      return setError("Password must be at least 8 characters");
     }
 
-    try{
+    try {
       setLoading(true);
-      await signup(email,password);
+      await signup(email, password);
       // username is updated immediately after profile creation
       await updateUserProfile(displayName);
-      navigate('/dashboard')
-    }catch(err){
-      setError("Failed to create user account: " + (err.message))
-    }finally{
-      setLoading(false)
+      // a verification link is sent to created user email
+      await verifyUserEmail();
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Failed to create user account: " + err.message);
+    } finally {
+      setLoading(false);
     }
-
-  }
+  };
 
   return (
     <div>
@@ -91,8 +98,9 @@ const Signup = () => {
               <form onSubmit={handleSubmit}>
                 {/* displayed erros on the form */}
                 {error && (
-                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
-                    {error}
+                  <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                    <span className="text-red-800 text-sm">{error}</span>
                   </div>
                 )}
                 <div className="space-y-2 mt-2">
@@ -223,7 +231,10 @@ const Signup = () => {
                       />
                       <p className="ms-2 text-sm font-medium text-heading select-none">
                         I agree with the{" "}
-                        <a href="#" className="text-amber-500 font-bold hover:underline">
+                        <a
+                          href="#"
+                          className="text-amber-500 font-bold hover:underline"
+                        >
                           terms and conditions
                         </a>
                       </p>
@@ -241,10 +252,10 @@ const Signup = () => {
                       disabled={loading}
                     >
                       {loading ? (
-                        <div className='flex justify-center items-center gap-1'>
+                        <div className="flex justify-center items-center gap-1">
                           {" "}
                           <ClipLoader color="#ffff" size={20} loading={true} />
-                          <p >Creating account...</p>
+                          <p>Creating account...</p>
                         </div>
                       ) : (
                         "Register"
@@ -573,4 +584,4 @@ const Signup = () => {
   );
 };
 
-export default Signup
+export default Signup;

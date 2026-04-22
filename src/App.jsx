@@ -18,6 +18,14 @@ import UserProfile from "./routes/UserProfile";
 import CourseBuilder  from "./routes/CourseBuilder";
 import Projects from "./routes/Projects";
 import Calender from "./routes/Calender";
+import StartingCourse from "./routes/StartingCourse";
+import ReactNative from "./routes/ReactNative";
+import HtmlCss from "./routes/HtmlCss";
+import JavaScript from "./routes/JavaScript";
+import UiUx from "./routes/UiUx";
+import GitHub from "./routes/GitHub";
+import NodeJs from "./routes/NodeJs";
+
 
 function App() {
   // imported state from AuthContext
@@ -168,6 +176,98 @@ function App() {
             <ProtectedRoute>
               <div>
                 <Billing />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* protected route on the starting course route */}
+        <Route
+          path="/startingcourse"
+          element={
+            <ProtectedRoute>
+              <div>
+                <StartingCourse />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* protected route on the react course route */}
+        <Route
+          path="/startingcourse/reactnative"
+          element={
+            <ProtectedRoute>
+              <div>
+                <ReactNative />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* protected route on the html-css course route */}
+        <Route
+          path="/startingcourse/htmlcss"
+          element={
+            <ProtectedRoute>
+              <div>
+                <HtmlCss />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the javascript course route */}
+        <Route
+          path="/startingcourse/fundamentaljs"
+          element={
+            <ProtectedRoute>
+              <div>
+                <JavaScript />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the ui-ux course route */}
+        <Route
+          path="/startingcourse/uiux"
+          element={
+            <ProtectedRoute>
+              <div>
+                <UiUx />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the github course route */}
+        <Route
+          path="/startingcourse/github"
+          element={
+            <ProtectedRoute>
+              <div>
+                <GitHub />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* protected route on the react course route */}
+        <Route
+          path="/startingcourse/advancedreact"
+          element={
+            <ProtectedRoute>
+              <div>
+                <ReactNative />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        {/* protected route on the nodejs course route */}
+        <Route
+          path="/startingcourse/nodejsbackend"
+          element={
+            <ProtectedRoute>
+              <div>
+                <NodeJs />
               </div>
             </ProtectedRoute>
           }

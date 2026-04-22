@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import {
@@ -25,12 +25,23 @@ const CourseBuilder = () => {
   const { currentUser } = useAuth();
   // dashboard menu toggle mobile view states and function
   const [dashBoardClick, setDashBoardClick] = useState(false);
+  const dropdownRef = useRef(null);
+
   const handleDashboardClick = () => {
     setDashBoardClick(!dashBoardClick);
   };
   const removeDashBoard = () => {
     setDashBoardClick(false);
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDashBoardClick(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // dashboard sideBar
   const dashBoardMenu = (
@@ -46,7 +57,10 @@ const CourseBuilder = () => {
               <X size={25} onClick={removeDashBoard} />
             </span>
             <ul className="space-y-3 py-8 font-medium">
-              <li>
+              <li
+                onClick={() => setSelectedCategory("dashboard")}
+                className={`categories ${isDashboard ? "bg-gray-300 rounded-lg" : ""}`}
+              >
                 <Link
                   to="/dashboard"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
@@ -56,7 +70,10 @@ const CourseBuilder = () => {
                   <span className="ms-3">Dashboard</span>
                 </Link>
               </li>
-              <li>
+              <li
+                onClick={() => setSelectedCategory("courses")}
+                className={`categories ${isCourses ? "bg-gray-300 rounded-lg" : ""}`}
+              >
                 <Link
                   to="/courses"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
@@ -69,7 +86,10 @@ const CourseBuilder = () => {
                   </span>
                 </Link>
               </li>
-              <li>
+              <li
+                onClick={() => setSelectedCategory("projects")}
+                className={`categories ${isProjects ? "bg-gray-300 rounded-lg" : ""}`}
+              >
                 <Link
                   to="/projects"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
@@ -80,11 +100,14 @@ const CourseBuilder = () => {
                     Projects
                   </span>
                   <span className="inline-flex items-center justify-center p-0.5 ms-2 text-xs font-medium text-fg-danger-strong bg-danger-soft border border-danger-subtle rounded-full">
-                    2+
+                    10+
                   </span>
                 </Link>
               </li>
-              <li>
+              <li
+                onClick={() => setSelectedCategory("coursebuilder")}
+                className={`categories ${isCourseBuilder ? "bg-gray-300 rounded-lg" : ""}`}
+              >
                 <Link
                   to="#"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300"
@@ -97,7 +120,10 @@ const CourseBuilder = () => {
                 </Link>
               </li>
 
-              <li>
+              <li
+                onClick={() => setSelectedCategory("calender")}
+                className={`categories ${isCalender ? "bg-gray-300 rounded-lg" : ""}`}
+              >
                 <Link
                   to="/calender"
                   className="flex items-center px-2 py-2 text-body rounded-lg hover:bg-gray-300 "
@@ -133,8 +159,8 @@ const CourseBuilder = () => {
                   </svg>
                   Trending
                 </span>
-                <h5 className="mt-3 text-xl font-semibold tracking-tight text-heading">
-                  Good programmers write codes human understand
+                <h5 className="mt-3 text-lg font-semibold tracking-tight text-heading">
+                  Good programmers write codes humans can understand
                 </h5>
 
                 <Link
@@ -155,20 +181,22 @@ const CourseBuilder = () => {
   return (
     <div>
       {/* dashboard side navigation links */}
-      <div>
-        <button
-          data-drawer-target="default-sidebar"
-          data-drawer-toggle="default-sidebar"
-          aria-controls="default-sidebar"
-          type="button"
-          className=" bg-gray-300 md:hidden font-medium leading-5  rounded-base  mt-22 text-sm p-2 cursor-pointer inline-flex"
-          onClick={handleDashboardClick}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <Menu />
-        </button>
+      <div ref={dropdownRef}>
+        <div className="w-full bg-gray-300">
+          <button
+            data-drawer-target="default-sidebar"
+            data-drawer-toggle="default-sidebar"
+            aria-controls="default-sidebar"
+            type="button"
+            className="  md:hidden font-medium leading-5  rounded-base  mt-22 text-sm py-3 px-2 cursor-pointer inline-flex"
+            onClick={handleDashboardClick}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <Menu />
+          </button>
+        </div>
+        <div className=" md:hidden">{dashBoardClick && dashBoardMenu}</div>
       </div>
-      <div className=" md:hidden">{dashBoardClick && dashBoardMenu}</div>
       <div className="lg:flex md:flex hidden">
         <aside
           id="default-sidebar"
@@ -217,7 +245,7 @@ const CourseBuilder = () => {
                     Projects
                   </span>
                   <span className="inline-flex items-center justify-center p-0.5 ms-2 text-xs font-medium text-fg-danger-strong bg-danger-soft border border-danger-subtle rounded-full">
-                    2+
+                    10+
                   </span>
                 </Link>
               </li>
@@ -274,8 +302,8 @@ const CourseBuilder = () => {
                   </svg>
                   Trending
                 </span>
-                <h5 className="mt-3 text-xl font-semibold tracking-tight text-heading">
-                  Good programmers write codes human understand
+                <h5 className="mt-3 text-lg font-semibold tracking-tight text-heading">
+                  Good programmers write codes humans can understand
                 </h5>
 
                 <Link

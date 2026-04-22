@@ -6,7 +6,7 @@ import {
   Eye,
   Mail,
   LockKeyhole,
-  User,
+  AlertCircle,
 } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { Link, useNavigate } from "react-router-dom";
@@ -43,7 +43,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
-    if (!email ) {
+    if (!email) {
       return setError("Enter email");
     }
     if (!password) {
@@ -386,8 +386,9 @@ const Login = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 {error && (
-                  <div className="bg-red-100 text-red-700 p-3 rounded-md my-4 text-sm">
-                    {error}
+                  <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                    <span className="text-red-800 text-sm">{error}</span>
                   </div>
                 )}
                 <div className="space-y-2 mt-2">

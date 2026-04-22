@@ -15,15 +15,14 @@ const Pricing = () => {
               Simple pricing, for everyone.
             </h2>
             <p className="lg:py-5 text-amber-50 text-center">
-              It doesn’t matter what size your business is, our software will
-              work well for you.
+              Irrespective of your financial status, LearnFlow financial plan will always work for you.
             </p>
           </div>
           <div className="lg:flex justify-center md:grid  gap-10 py-10 text-amber-50">
             <div className="lg:max-w-87.5  px-5">
               <div className="flex items-center">
-                <h2 className="py-2 text-6xl">9$</h2>
-                <p className="text-center px-3">USD Per Month.</p>
+                <h2 className="py-2 text-6xl">109$</h2>
+                <p className="text-center px-3">USD Annually.</p>
               </div>
               <h4 className="text-2xl py-2">Beginner</h4>
               <p className="py-3">
@@ -65,8 +64,8 @@ const Pricing = () => {
             <div>
               <div className=" bg-amber-400 rounded-lg p-10 text-black">
                 <div className="flex items-center">
-                  <h2 className="py-2 text-6xl">15$</h2>
-                  <p className="px-3">USD Per Month.</p>
+                  <h2 className="py-2 text-6xl">115$</h2>
+                  <p className="px-3">USD Annually.</p>
                   <div className="bg-linear-to-r from-zinc-900 to-zinc-600  px-6 py-2 rounded-xl text-amber-50">
                     <p>Popular</p>
                   </div>
@@ -121,8 +120,8 @@ const Pricing = () => {
             <div>
               <div className="px-5">
                 <div className="flex items-center">
-                  <h2 className="py-2 text-6xl">39$</h2>
-                  <p className="px-3">USD Per Month.</p>
+                  <h2 className="py-2 text-6xl">139$</h2>
+                  <p className="px-3">USD Annually.</p>
                 </div>
                 <h4 className="text-2xl py-2">Masters</h4>
                 <p className="py-3">
