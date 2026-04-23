@@ -322,12 +322,32 @@ const CourseBuilder = () => {
       <div>
         <div className=" ml-5 p-4 md:mt-18 md:ml-64">
           <div>
-            Welcome to Course Builder kjergiehriguherg erjgeoirguierg ejirghuerg
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
+              <div className="max-w-xl w-full bg-white shadow-xl rounded-3xl border border-gray-200 p-10 text-center">
+                <div className="mb-6">
+                  <p className="text-5xl font-extrabold text-amber-500">404</p>
+                </div>
+                <h1 className="text-2xl font-semibold text-gray-900 mb-3">
+                  Page not found
+                </h1>
+                <p className="text-gray-600 mb-6">
+                  The course builder page you’re looking for is unavailable.
+                  click the link below to return to the courses page and continue Your learning journey.
+                </p>
+                <Link
+                  to="/courses"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-amber-500 rounded-full shadow-sm hover:bg-amber-600"
+                >
+                  Return to Courses
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default CourseBuilder;
