@@ -46,8 +46,8 @@ const GitHub = () => {
   const [likes, setLikes] = useState(1523);
   const [isLiked, setIsLiked] = useState(false);
   const [newComment, setNewComment] = useState("");
-   const [commentError, setCommentError] = useState("");
-    const [success, setSuccess] = useState("");
+  const [commentError, setCommentError] = useState("");
+  const [success, setSuccess] = useState("");
   const [courseSuccess, setCourseSuccess] = useState("");
   const [iframeSrc, setIframeSrc] = useState(
     "https://www.youtube.com/embed/RGOj5yH7evk?rel=0",
@@ -93,16 +93,16 @@ const GitHub = () => {
   };
 
   const handleAddComment = () => {
-     if (!newComment.trim()) {
-       return setCommentError("Comment cannot be empty");
-     }
+    if (!newComment.trim()) {
+      return setCommentError("Comment cannot be empty");
+    }
 
-     if (newComment.trim()) {
-       // Add comment logic here
-       setNewComment("");
-       setSuccess("Comment added successfully!");
-       setTimeout(() => setSuccess(""), 3000);
-     }
+    if (newComment.trim()) {
+      // Add comment logic here
+      setNewComment("");
+      setSuccess("Comment added successfully!");
+      setTimeout(() => setSuccess(""), 3000);
+    }
   };
   // dashboard menu toggle mobile view states and function
   const [dashBoardClick, setDashBoardClick] = useState(false);
@@ -464,35 +464,22 @@ const GitHub = () => {
                             <Volume2 size={20} />
                           )}
                         </button>
-
-                        {/* <a
-                          href="https://www.youtube.com/watch?v=RGOj5yH7evk"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-white text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors"
-                        >
-                          Open in YouTube
-                        </a> */}
                       </div>
-
-                      {/* <div className="text-white text-sm">
-                        {isPlaying
-                          ? "Playing in embedded player"
-                          : "Ready to play in the embedded player"}
-                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
-               {/* course success display */}
-                           <div>
-                             {courseSuccess && (
-                               <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                                 <span className="text-green-800 text-sm">{courseSuccess}</span>
-                               </div>
-                             )}
-                           </div>
+              {/* course success display */}
+              <div>
+                {courseSuccess && (
+                  <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-green-800 text-sm">
+                      {courseSuccess}
+                    </span>
+                  </div>
+                )}
+              </div>
 
               {/* Course Description */}
               <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
@@ -658,20 +645,20 @@ const GitHub = () => {
                   </div>
                 </div>
 
-                       {/* comment success and error display */}
-                                  {success && (
-                                    <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                                      <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                                      <span className="text-green-800 text-sm">{success}</span>
-                                    </div>
-                                  )}
-                
-                                  {commentError && (
-                                    <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
-                                      <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-                                      <span className="text-red-800 text-sm">{commentError}</span>
-                                    </div>
-                                  )}
+                {/* comment success and error display */}
+                {success && (
+                  <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-green-800 text-sm">{success}</span>
+                  </div>
+                )}
+
+                {commentError && (
+                  <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                    <span className="text-red-800 text-sm">{commentError}</span>
+                  </div>
+                )}
 
                 {/* Sample Comments */}
                 <div className="space-y-4">

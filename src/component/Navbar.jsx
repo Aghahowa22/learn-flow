@@ -68,11 +68,12 @@ const Navbar = () => {
 
   //  navbar content mobile view display
   const content = (
-    <>
-      <div
-        onClick={handleClick}
-        className="z-50 md:hidden block absolute top-16 w-full h-screen right-0 left-0 bg-zinc-900 transition "
-      >
+    <aside
+      onClick={handleClick}
+      className="z-50 md:hidden block absolute top-16 w-full h-screen right-0 left-0 bg-zinc-900 transition"
+      aria-label="Mobile navigation"
+    >
+      <nav className="h-full">
         <ul className="text-center text-xl p-20 ">
           <Link to="/about">
             <li className="my-0 py-4 text-amber-50 border-b border-amber-400 ">
@@ -101,8 +102,8 @@ const Navbar = () => {
             </li>
           </Link>
         </ul>
-      </div>
-    </>
+      </nav>
+    </aside>
   );
   // user profile dropdown menu icon when logged in
   const userProfile = (

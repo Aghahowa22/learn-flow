@@ -86,16 +86,15 @@ const HtmlCss = () => {
 
   const handleComplete = () => {
     setIsCompleted(true);
-    setCourseSuccess("Congratulations! You've completed the HTML & CSS course!");
-     setTimeout(() => setCourseSuccess(""), 3000);
-
+    setCourseSuccess(
+      "Congratulations! You've completed the HTML & CSS course!",
+    );
+    setTimeout(() => setCourseSuccess(""), 3000);
   };
 
   const handleAddComment = () => {
     if (!newComment.trim()) {
       return setCommentError("Comment cannot be empty");
-
-
     }
 
     if (newComment.trim()) {
@@ -465,32 +464,19 @@ const HtmlCss = () => {
                             <Volume2 size={20} />
                           )}
                         </button>
-
-                        {/* <a
-                          href="https://www.youtube.com/watch?v=lSZ9jKHs4oA"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-white text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors"
-                        >
-                          Open in YouTube
-                        </a> */}
                       </div>
-
-                      {/* <div className="text-white text-sm">
-                        {isPlaying
-                          ? "Playing in embedded player"
-                          : "Ready to play in the embedded player"}
-                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
-               {/* course success display */}
+              {/* course success display */}
               <div>
                 {courseSuccess && (
                   <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                    <span className="text-green-800 text-sm">{courseSuccess}</span>
+                    <span className="text-green-800 text-sm">
+                      {courseSuccess}
+                    </span>
                   </div>
                 )}
               </div>
@@ -528,30 +514,30 @@ const HtmlCss = () => {
                 </div>
               </div>
 
-               {/* Complete Button */}
-                            {!isCompleted && (
-                              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
-                                <div className="flex items-center justify-between">
-                                  <div className="flex items-center space-x-3">
-                                    <CheckCircle className="w-8 h-8 text-blue-600" />
-                                    <div>
-                                      <h3 className="text-lg font-semibold text-blue-900">
-                                        Ready to Complete?
-                                      </h3>
-                                      <p className="text-blue-700">
-                                        Mark this lesson as completed to track your progress.
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <button
-                                    onClick={handleComplete}
-                                    className="bg-blue-600  hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium transition-colors"
-                                  >
-                                    Mark as Complete
-                                  </button>
-                                </div>
-                              </div>
-                            )}
+              {/* Complete Button */}
+              {!isCompleted && (
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-8 h-8 text-blue-600" />
+                      <div>
+                        <h3 className="text-lg font-semibold text-blue-900">
+                          Ready to Complete?
+                        </h3>
+                        <p className="text-blue-700">
+                          Mark this lesson as completed to track your progress.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleComplete}
+                      className="bg-blue-600  hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium transition-colors"
+                    >
+                      Mark as Complete
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Complete Button */}
               {isCompleted && (
@@ -664,7 +650,9 @@ const HtmlCss = () => {
                   {commentError && (
                     <div className="flex items-center my-4 gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
                       <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-                      <span className="text-red-800 text-sm">{commentError}</span>
+                      <span className="text-red-800 text-sm">
+                        {commentError}
+                      </span>
                     </div>
                   )}
                 </div>

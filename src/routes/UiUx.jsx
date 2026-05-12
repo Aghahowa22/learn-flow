@@ -47,10 +47,10 @@ const UiUx = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [commentError, setCommentError] = useState("");
-    const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState("");
   const [courseSuccess, setCourseSuccess] = useState("");
   const [iframeSrc, setIframeSrc] = useState(
-    "https://www.youtube.com/embed/x5OSOCMrOYY?rel=0"
+    "https://www.youtube.com/embed/x5OSOCMrOYY?rel=0",
   );
 
   // back button click handler
@@ -65,7 +65,7 @@ const UiUx = () => {
     const muteParam = isMuted ? "&mute=1" : "";
     const autoplayParam = nextIsPlaying ? "&autoplay=1" : "";
     setIframeSrc(
-      `https://www.youtube.com/embed/x5OSOCMrOYY?rel=0${autoplayParam}${muteParam}`
+      `https://www.youtube.com/embed/x5OSOCMrOYY?rel=0${autoplayParam}${muteParam}`,
     );
   };
 
@@ -75,7 +75,7 @@ const UiUx = () => {
     const autoplayParam = isPlaying ? "&autoplay=1" : "";
     const muteParam = nextIsMuted ? "&mute=1" : "";
     setIframeSrc(
-      `https://www.youtube.com/embed/x5OSOCMrOYY?rel=0${autoplayParam}${muteParam}`
+      `https://www.youtube.com/embed/x5OSOCMrOYY?rel=0${autoplayParam}${muteParam}`,
     );
   };
 
@@ -87,22 +87,22 @@ const UiUx = () => {
   const handleComplete = () => {
     setIsCompleted(true);
     setCourseSuccess(
-      "Congratulations! You've completed the UI/UX Design Masterclass!"
+      "Congratulations! You've completed the UI/UX Design Masterclass!",
     );
     setTimeout(() => setCourseSuccess(""), 3000);
   };
 
   const handleAddComment = () => {
-     if (!newComment.trim()) {
-       return setCommentError("Comment cannot be empty");
-     }
+    if (!newComment.trim()) {
+      return setCommentError("Comment cannot be empty");
+    }
 
-     if (newComment.trim()) {
-       // Add comment logic here
-       setNewComment("");
-       setSuccess("Comment added successfully!");
-       setTimeout(() => setSuccess(""), 3000);
-     }
+    if (newComment.trim()) {
+      // Add comment logic here
+      setNewComment("");
+      setSuccess("Comment added successfully!");
+      setTimeout(() => setSuccess(""), 3000);
+    }
   };
   // dashboard menu toggle mobile view states and function
   const [dashBoardClick, setDashBoardClick] = useState(false);
@@ -464,36 +464,23 @@ const UiUx = () => {
                             <Volume2 size={20} />
                           )}
                         </button>
-
-                        {/* <a
-                          href="https://www.youtube.com/watch?v=c5Fy50C3Ff8"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-white text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors"
-                        >
-                          Open in YouTube
-                        </a> */}
                       </div>
-
-                      {/* <div className="text-white text-sm">
-                        {isPlaying
-                          ? "Playing in embedded player"
-                          : "Ready to play in the embedded player"}
-                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
 
-                {/* course success display */}
-                            <div>
-                              {courseSuccess && (
-                                <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                                  <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                                  <span className="text-green-800 text-sm">{courseSuccess}</span>
-                                </div>
-                              )}
-                            </div>
+              {/* course success display */}
+              <div>
+                {courseSuccess && (
+                  <div className="flex items-center my-4 gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                    <span className="text-green-800 text-sm">
+                      {courseSuccess}
+                    </span>
+                  </div>
+                )}
+              </div>
 
               {/* Course Description */}
               <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
@@ -528,30 +515,30 @@ const UiUx = () => {
                 </div>
               </div>
 
-               {/* Complete Button */}
-                            {!isCompleted && (
-                              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
-                                <div className="flex items-center justify-between">
-                                  <div className="flex items-center space-x-3">
-                                    <CheckCircle className="w-8 h-8 text-blue-600" />
-                                    <div>
-                                      <h3 className="text-lg font-semibold text-blue-900">
-                                        Ready to Complete?
-                                      </h3>
-                                      <p className="text-blue-700">
-                                        Mark this lesson as completed to track your progress.
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <button
-                                    onClick={handleComplete}
-                                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium transition-colors"
-                                  >
-                                    Mark as Complete
-                                  </button>
-                                </div>
-                              </div>
-                            )}
+              {/* Complete Button */}
+              {!isCompleted && (
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-8 h-8 text-blue-600" />
+                      <div>
+                        <h3 className="text-lg font-semibold text-blue-900">
+                          Ready to Complete?
+                        </h3>
+                        <p className="text-blue-700">
+                          Mark this lesson as completed to track your progress.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleComplete}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium transition-colors"
+                    >
+                      Mark as Complete
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Complete Button */}
               {isCompleted && (
@@ -577,8 +564,6 @@ const UiUx = () => {
                   </div>
                 </div>
               )}
-
-             
             </div>
 
             {/* Sidebar */}

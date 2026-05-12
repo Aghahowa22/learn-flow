@@ -2,9 +2,7 @@ import { MoveRight, BriefcaseBusiness, User, Layers } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 // hero setion img
-import HumanImg1 from "../assets/humanimage1.avif";
-import HumanImg2 from "../assets/humanimg2.jpg";
-import HumanImg3 from "../assets/humanimg3.jpg";
+
 import DashboardImg from "../assets/dashboardImg.png";
 import FemaleImg1 from "../assets/femaleimg1.png";
 import FemaleImg2 from "../assets/femaleimg2.png";
@@ -98,23 +96,7 @@ const Landing = () => {
               alt=""
             />
           </div>
-          {/* <div className=" relative flex justify-center gap-4 py-8">
-            <img
-              src={HumanImg1}
-              alt="Human 1"
-              className="absolute w-20 h-20 border-2 border-amber-50 rounded-full object-cover"
-            />
-            <img
-              src={HumanImg2}
-              alt="Human 2"
-              className="  w-20 h-20 border-2 border-amber-50 rounded-full object-cover"
-            />
-            <img
-              src={HumanImg3}
-              alt="Human 3"
-              className="  w-20 h-20 border-2 border-amber-50 rounded-full object-cover"
-            />
-          </div> */}
+          
           <p className="text-md text-center md:text-lg font-normal py-4 text-amber-50">
             Join thousands of student to start coding now!
           </p>

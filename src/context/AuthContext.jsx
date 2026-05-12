@@ -92,28 +92,13 @@ export function AuthProvider({ children }) {
     }
   }
 
-  // updating user profile display name immediately after user creation
-
-  async function updateUserProfile(displayName, photoURL) {
-    setError("");
-    try {
-      return await updateProfile(auth.currentUser, {
-        displayName: displayName,
-        photoURL: photoURL,
-      });
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    }
-  }
-
   // reauthenticate user with email and password
   async function reauthenticateUser(currentPassword) {
     setError("");
     try {
       const credential = EmailAuthProvider.credential(
         auth.currentUser.email,
-        currentPassword
+        currentPassword,
       );
       return await reauthenticateWithCredential(auth.currentUser, credential);
     } catch (err) {
@@ -176,7 +161,7 @@ export function AuthProvider({ children }) {
     if (!file) return;
 
     if (file.size > maxSize) {
-      setPhotoError("File size exceeds 5MB");
+      setPhotoError("File size exceeds 40MB");
       return;
     }
 
@@ -207,7 +192,7 @@ export function AuthProvider({ children }) {
       }
 
       // Get public URL
-      const { data: publicUrlData } =  supabase.storage
+      const { data: publicUrlData } = supabase.storage
         .from("Avater")
         .getPublicUrl(filePath);
 
@@ -226,6 +211,21 @@ export function AuthProvider({ children }) {
       setUploading(false);
     }
   };
+
+  // updating user profile display name immediately after user creation
+
+  async function updateUserProfile(displayName, photoURL) {
+    setError("");
+    try {
+      return await updateProfile(auth.currentUser, {
+        displayName: displayName,
+        photoURL: photoURL,
+      });
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    }
+  }
 
   // function to allow user remove profile photo
   // const handleRemovePhoto = async () => {

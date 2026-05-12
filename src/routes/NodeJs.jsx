@@ -574,7 +574,7 @@ const NodeJs = () => {
                     </div>
                     <div className="flex-1">
                       <textarea
-                       name="comment"
+                        name="comment"
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder="Share your thoughts about this course..."
