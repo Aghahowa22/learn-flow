@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 // hero setion img
 
 import DashboardImg from "../assets/dashboardImg.png";
-import FemaleImg1 from "../assets/femaleimg1.png";
-import FemaleImg2 from "../assets/femaleimg2.png";
+import FemaleImg1 from "../assets/femaleImg1.png";
+import FemaleImg2 from "../assets/femaleImg2.png";
 // testimomnial img
 import TestimonialImg1 from "../assets/TImage1F.jpeg";
 import TestimonialImg2 from "../assets/Timage2F.jpeg";
@@ -290,7 +290,7 @@ const Landing = () => {
           <div>
             <img
               src={FemaleImg1}
-              alt="Female Image 1"
+              alt="Female-Image-1"
               className="bg-linear-to-r from-zinc-900 to-zinc-600 w-full md:max-w-150 object-cover rounded-lg"
               loading="lazy"
             />
@@ -318,7 +318,7 @@ const Landing = () => {
           <div>
             <img
               src={FemaleImg2}
-              alt="Female Image 2"
+              alt="Female-Image-2"
               className=" bg-linear-to-r from-zinc-900 to-zinc-600 w-full max-w-150 object-cover rounded-lg"
               loading="lazy"
             />
