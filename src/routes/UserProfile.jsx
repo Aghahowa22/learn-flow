@@ -607,7 +607,7 @@ const UserProfile = () => {
                 />
               </label>
               <p className="text-xs text-gray-500 mt-2">
-                JPG, PNG, GIF, WebP, AVIF up to 40MB
+                JPG, PNG, GIF, WebP, AVIF up to 5MB
               </p>
             </div>
           </div>

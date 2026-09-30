@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import {
   House,
@@ -35,7 +35,7 @@ const UiUx = () => {
   const isCourseBuilder = selectedCategory === "coursebuilder";
   const isCalender = selectedCategory === "calender";
   // import useAuth from auth context
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   // useNavigate hook for back navigation
   const navigate = useNavigate();
 
@@ -413,13 +413,13 @@ const UiUx = () => {
 
           {/* Course Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="md:text-4xl text-2xl font-bold text-gray-900 mb-2">
               UI/UX Design Masterclass
             </h1>
-            <div className="flex items-center space-x-4 text-gray-600">
+            <div className="flex items-center space-x-4 text-gray-600 md:text-sm text-xs py-2">
               <div className="flex items-center space-x-1">
                 <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                <span className="font-medium">4.7</span>
+                <span className="font-medium ">4.7</span>
                 <span>(1,892 reviews)</span>
               </div>
               <span>•</span>
@@ -520,19 +520,19 @@ const UiUx = () => {
                 <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-8 h-8 text-blue-600" />
+                      <CheckCircle className="hidden md:block w-8 h-8 text-blue-600" />
                       <div>
-                        <h3 className="text-lg font-semibold text-blue-900">
+                        <h3 className="md:text-lg  text-sm font-semibold text-blue-900">
                           Ready to Complete?
                         </h3>
-                        <p className="text-blue-700">
+                        <p className="text-blue-700 md:text-sm text-xs">
                           Mark this lesson as completed to track your progress.
                         </p>
                       </div>
                     </div>
                     <button
                       onClick={handleComplete}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium transition-colors"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 cursor-pointer rounded-lg font-medium md:text-sm mx-1 text-xs transition-colors"
                     >
                       Mark as Complete
                     </button>
@@ -545,19 +545,19 @@ const UiUx = () => {
                 <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-8 h-8 text-green-600" />
+                      <CheckCircle className="hidden md:block w-8 h-8 text-green-600" />
                       <div>
-                        <h3 className="text-lg font-semibold text-green-900">
+                        <h3 className="md:text-lg text-sm font-semibold text-green-900">
                           Course Completed!
                         </h3>
-                        <p className="text-green-700">
+                        <p className="text-green-700 md:text-sm text-xs">
                           Congratulations on finishing this lesson.
                         </p>
                       </div>
                     </div>
                     <button
                       onClick={handleComplete}
-                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium md:text-sm mx-1 text-xs transition-colors"
                     >
                       Mark as Complete
                     </button>

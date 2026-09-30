@@ -17,12 +17,12 @@ import {
 } from "firebase/auth";
 
 import { auth } from "../../firebaseconfig";
-import { supabase } from "../../supabaseClient" // Make sure you have this configured
-
+import { supabase } from "../../supabaseClient"; // Make sure you have this configured
 
 const AuthContext = createContext();
 
 // useAuth to be used all over the application
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   return useContext(AuthContext);
 }
@@ -180,7 +180,7 @@ export function AuthProvider({ children }) {
       const filePath = `profile-photos/${currentUser.uid}/${fileName}`;
 
       // Upload file to Supabase Storage
-      const { data, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("Avater") // Make sure this bucket exists
         .upload(filePath, file, {
           cacheControl: "3600",

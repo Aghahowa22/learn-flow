@@ -5,7 +5,7 @@ const Modal = ({children, modalOpen, setModalOpen}) => {
     // back drop
     <>
       <div
-        onClick={(e) => setModalOpen(false)}
+        onClick={() => setModalOpen(false)}
         className={` fixed inset-0 flex  justify-center items-center transition-colors z-10 ${modalOpen ? "visible bg-black/20" : "invisible"}`}
       >
         {/* modal */}

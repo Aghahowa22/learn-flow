@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import {
   House,
@@ -32,7 +32,7 @@ const Calender = () => {
   const isCalender = selectedCategory === "calender";
 
   // import useAuth from auth context
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   // dashboard menu toggle mobile view states and function
   const [dashBoardClick, setDashBoardClick] = useState(false);
   const dropdownRef = useRef(null);

@@ -30,10 +30,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const toggleMenu = (e) => {
+  const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const removeDropNavbar = (e) => {
+  const removeDropNavbar = () => {
     setIsOpen(false);
   };
   //  function to remove user profile drop down when the page of the dashboard is click
@@ -56,7 +56,7 @@ const Navbar = () => {
   const { currentUser, logout, profileImage } = useAuth();
   const navigate = useNavigate();
   // logout function
-  const handleLogout = async (e) => {
+  const handleLogout = async () => {
     try {
       await logout();
       setIsOpen(false);
@@ -144,7 +144,7 @@ const Navbar = () => {
             {/* modal popup display to allow user logout */}
             <li>
               <button
-                onClick={(e) => setModalOpen(true)}
+                onClick={() => setModalOpen(true)}
                 className="bg-red-600 p-2 my-2 cursor-pointer text-amber-50 hover:opacity-80 hover:text-heading rounded-md"
               >
                 Sign out

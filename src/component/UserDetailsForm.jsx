@@ -44,7 +44,7 @@ const UserDetailsForm = () => {
       setSuccess("User details saved successfully!");
       setTimeout(() => setSuccess(), 4000);
     } catch (err) {
-      setError("Failed to save user details. Please try again.");
+      setError("Failed to save user details. Please try again.", err.message);
     } finally {
       setLoading(false);
     }

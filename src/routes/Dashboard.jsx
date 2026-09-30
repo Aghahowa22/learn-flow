@@ -59,7 +59,7 @@ const Dashboard = () => {
   }, []);
 
   // ============ LMS DASHBOARD STATE ============
-  const [userStats, setUserStats] = useState({
+  const [userStats] = useState({
     totalCourses: 12,
     completedCourses: 0,
     inProgressCourses: 3,
@@ -609,28 +609,28 @@ const Dashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                  {getGreeting()}, {userData.name}! 👋
+                  {getGreeting()}, {userData.name}! 
                 </h2>
                 <p className="text-gray-600 text-lg">
                   Welcome back to your learning journey. You're doing amazing!
                 </p>
                 <div className="flex items-center gap-4 mt-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Calendar size={16} />
+                  <div className="flex items-center gap-2 md:text-sm text-xs text-gray-600">
+                    <Calendar size={14} />
                     Member since {userData.joinDate}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-amber-600 font-medium">
+                  {/* <div className="flex items-center gap-2 text-sm text-amber-600 font-medium">
                     <Zap size={16} />
-                    {userStats.streakDays} day streak! 🔥
-                  </div>
+                    {userStats.streakDays} day streak! 
+                  </div> */}
                 </div>
               </div>
-              <div className="hidden md:block">
+              {/* <div className="hidden md:block">
                 <div className="text-right">
                   <div className="text-4xl mb-2">🎓</div>
                   <p className="text-sm text-gray-600">Keep learning!</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -722,7 +722,7 @@ const Dashboard = () => {
             <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900">
-                  📚 Current Courses
+                  Current Courses
                 </h2>
                 <Link
                   to="/courses"
@@ -746,9 +746,8 @@ const Dashboard = () => {
                         <p className="text-sm text-gray-600 mb-2">
                           by {course.instructor}
                         </p>
-                        <div className="flex items-center gap-4 text-xs text-gray-500">
-                          <span className="flex items-center gap-1">
-                            <BookIcon size={14} />
+                        <div className="flex py-2 items-center gap-4 text-xs text-gray-500">
+                          <span className="flex items-center  gap-1">
                             {course.completedLessons}/{course.totalLessons}{" "}
                             lessons
                           </span>
@@ -788,14 +787,14 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-gray-600">
+                    <div className="flex py-2 items-center justify-between gap-1">
+                      <p className="md:text-sm text-xs text-gray-600">
                         Next:{" "}
                         <span className="font-medium">{course.nextLesson}</span>
                       </p>
                       <Link
                         to="/startingcourse"
-                        className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                        className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-4 rounded-lg md:text-sm text-xs font-medium transition-colors"
                       >
                         Continue Learning
                       </Link>
@@ -837,11 +836,11 @@ const Dashboard = () => {
                           </span>
                           <span>•</span>
                           <span>
-                            {course.students.toLocaleString()} students
-                            interested
+                            {course.students.toLocaleString()} {" "}
+                            Interested
                           </span>
                         </div>
-                        <p className="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-full inline-block">
+                        <p className="text-xs text-amber-600 bg-amber-50 px-4 py-1 my-2 rounded-full inline-block">
                           {course.matchReason}
                         </p>
                       </div>
@@ -879,20 +878,45 @@ const Dashboard = () => {
             {/* Completed Courses */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">
-                ✅ Recently Completed
+                 Recently Completed
               </h3>
-              <div className="text-center py-8">
-                <CheckCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 text-base font-medium">
-                  Recently completed courses will appear here
-                </p>
-                <p className="text-gray-500 text-sm mt-2">
-                  Keep learning and complete courses to see them listed here.
-                </p>
+              <div className="space-y-3">
+                {completedCourses.map((course) => (
+                  <div
+                    key={course.id}
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-3"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="font-medium text-gray-900">
+                          {course.title}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {course.instructor}
+                        </p>
+                      </div>
+                      <span className="text-xs font-medium text-amber-600">
+                        ★ {course.rating}
+                      </span>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between text-[11px] text-gray-500">
+                      <span>{formatDate(course.completedDate)}</span>
+                      {course.certificate ? (
+                        <span className="font-medium text-green-600">
+                          Certificate
+                        </span>
+                      ) : (
+                        <span className="font-medium text-gray-500">
+                          In progress
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
               <Link
                 to="/courses"
-                className="text-amber-600 hover:text-amber-700 font-medium text-sm flex items-center gap-1"
+                className="mt-4 text-amber-600 hover:text-amber-700 font-medium text-sm flex items-center gap-1"
               >
                 Go to Courses <MoveRight size={16} />
               </Link>
@@ -901,7 +925,7 @@ const Dashboard = () => {
             {/* Earned Badges */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">
-                🏆 Your Badges
+                Your Badges
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {earnedBadges.map((badge) => (
@@ -940,7 +964,7 @@ const Dashboard = () => {
             {/* Learning Preferences */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">
-                🎯 Your Interests
+                Your Interests
               </h3>
               <div className="flex flex-wrap gap-2">
                 {userData.preferences.map((preference, index) => (

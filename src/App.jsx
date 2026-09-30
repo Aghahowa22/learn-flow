@@ -1,6 +1,6 @@
 import {} from "react";
 import Navbar from "./component/Navbar";
-import { Route, Routes, Navigate, replace, Link } from "react-router-dom";
+import { Route, Routes, Navigate, Link } from "react-router-dom";
 import { BookOpenText, Calendar } from "lucide-react";
 import Landing from "./routes/Landing";
 import About from "./routes/About";
@@ -15,7 +15,7 @@ import ProtectedRoute from "./component/ProtectedRoute";
 import Courses from "./routes/Courses";
 import Billing from "./routes/Billing";
 import UserProfile from "./routes/UserProfile";
-import CourseBuilder  from "./routes/CourseBuilder";
+import CourseBuilder from "./routes/CourseBuilder";
 import Projects from "./routes/Projects";
 import Calender from "./routes/Calender";
 import StartingCourse from "./routes/StartingCourse";
@@ -26,13 +26,12 @@ import UiUx from "./routes/UiUx";
 import GitHub from "./routes/GitHub";
 import NodeJs from "./routes/NodeJs";
 
-
 function App() {
   // imported state from AuthContext
-  const {currentUser, loading} = useAuth();
+  const { currentUser, loading } = useAuth();
 
   // loading before the app starts
-  if(loading){
+  if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex justify-center items-center text-4xl lg:5xl">
@@ -41,7 +40,6 @@ function App() {
             <span className="font-bold text-black">Learn</span>
             <span className="text-amber-400 font-extrabold ">Flow</span>
           </div>
-          
         </div>
       </div>
     );

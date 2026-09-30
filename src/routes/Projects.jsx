@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import {
   House,
@@ -36,7 +36,7 @@ const Projects = () => {
   const isCourseBuilder = selectedCategory === "coursebuilder";
   const isCalender = selectedCategory === "calender";
   // import useAuth from auth context
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   // dashboard menu toggle mobile view states and function
   const [dashBoardClick, setDashBoardClick] = useState(false);
   const dropdownRef = useRef(null);
@@ -73,7 +73,7 @@ const Projects = () => {
         estimatedTime: "2-3 hours",
         technologies: ["React", "CSS", "Local Storage"],
         features: ["Add tasks", "Mark complete", "Delete tasks", "Local storage"],
-        icon: "📝",
+        
         color: "from-green-400 to-green-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -86,7 +86,6 @@ const Projects = () => {
         estimatedTime: "4-5 hours",
         technologies: ["React", "API Integration", "CSS"],
         features: ["Current weather", "5-day forecast", "Location search", "Responsive design"],
-        icon: "🌤️",
         color: "from-blue-400 to-blue-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -99,7 +98,6 @@ const Projects = () => {
         estimatedTime: "3-4 hours",
         technologies: ["React", "CSS", "JavaScript"],
         features: ["Basic operations", "Clear function", "Decimal support", "Keyboard input"],
-        icon: "🧮",
         color: "from-purple-400 to-purple-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -112,7 +110,6 @@ const Projects = () => {
         estimatedTime: "4-6 hours",
         technologies: ["React", "API Integration", "CSS"],
         features: ["Recipe search", "Ingredient filter", "Recipe details", "Favorites"],
-        icon: "🍳",
         color: "from-orange-400 to-orange-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -126,7 +123,6 @@ const Projects = () => {
         estimatedTime: "3-4 hours",
         technologies: ["JavaScript", "HTML", "CSS", "Regex"],
         features: ["Password analysis", "Strength scoring", "Security tips", "Real-time feedback"],
-        icon: "🔐",
         color: "from-red-400 to-red-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -139,7 +135,6 @@ const Projects = () => {
         estimatedTime: "4-5 hours",
         technologies: ["Python", "Cryptography", "CLI"],
         features: ["Text encryption", "Decryption", "Multiple algorithms", "File handling"],
-        icon: "🔒",
         color: "from-yellow-400 to-yellow-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -153,7 +148,6 @@ const Projects = () => {
         estimatedTime: "3-4 hours",
         technologies: ["React", "Firebase Storage", "File API"],
         features: ["File upload", "Progress tracking", "File management", "Download links"],
-        icon: "☁️",
         color: "from-blue-400 to-blue-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -167,7 +161,6 @@ const Projects = () => {
         estimatedTime: "4-6 hours",
         technologies: ["Python", "Pandas", "Matplotlib", "Tkinter"],
         features: ["CSV parsing", "Data visualization", "Basic statistics", "Export charts"],
-        icon: "📊",
         color: "from-green-400 to-green-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -181,7 +174,6 @@ const Projects = () => {
         estimatedTime: "3-4 hours",
         technologies: ["Python", "CSV", "DateTime"],
         features: ["Expense tracking", "Income logging", "Monthly reports", "Data persistence"],
-        icon: "💰",
         color: "from-emerald-400 to-emerald-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -195,7 +187,6 @@ const Projects = () => {
         estimatedTime: "4-6 hours",
         technologies: ["Python", "Pygame"],
         features: ["Game mechanics", "Score system", "Collision detection", "Progressive difficulty"],
-        icon: "🐍",
         color: "from-lime-400 to-lime-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -209,7 +200,6 @@ const Projects = () => {
         estimatedTime: "2-3 hours",
         technologies: ["C++", "Console I/O"],
         features: ["Arithmetic operations", "Input validation", "Error handling", "Menu system"],
-        icon: "🔢",
         color: "from-cyan-400 to-cyan-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -224,7 +214,6 @@ const Projects = () => {
         estimatedTime: "10-15 hours",
         technologies: ["React", "Context API", "React Router", "CSS"],
         features: ["Product catalog", "Shopping cart", "Checkout process", "Order history"],
-        icon: "🛒",
         color: "from-indigo-400 to-indigo-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -237,7 +226,6 @@ const Projects = () => {
         estimatedTime: "12-18 hours",
         technologies: ["React", "Charts.js", "API Integration", "CSS"],
         features: ["Analytics charts", "Post scheduling", "Account management", "Real-time updates"],
-        icon: "📊",
         color: "from-cyan-400 to-cyan-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -250,7 +238,6 @@ const Projects = () => {
         estimatedTime: "8-12 hours",
         technologies: ["React", "React DnD", "Context API", "CSS"],
         features: ["Drag & drop", "Multiple boards", "Task assignment", "Due dates"],
-        icon: "📋",
         color: "from-teal-400 to-teal-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -263,7 +250,6 @@ const Projects = () => {
         estimatedTime: "6-10 hours",
         technologies: ["React", "HTML5 Audio", "CSS", "Local Storage"],
         features: ["Audio playback", "Playlists", "Progress bar", "Volume control"],
-        icon: "🎵",
         color: "from-pink-400 to-pink-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -277,7 +263,6 @@ const Projects = () => {
         estimatedTime: "8-12 hours",
         technologies: ["Python", "Scapy", "Socket Programming"],
         features: ["Host discovery", "Port scanning", "Service detection", "Report generation"],
-        icon: "🔍",
         color: "from-red-400 to-red-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -290,7 +275,6 @@ const Projects = () => {
         estimatedTime: "10-15 hours",
         technologies: ["Python", "Cryptography", "SQLite", "Tkinter"],
         features: ["Password storage", "Encryption", "Password generator", "Secure vault"],
-        icon: "🗝️",
         color: "from-purple-400 to-purple-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -304,7 +288,6 @@ const Projects = () => {
         estimatedTime: "12-18 hours",
         technologies: ["AWS Lambda", "S3", "API Gateway", "Python"],
         features: ["File upload", "Serverless processing", "Cloud storage", "API endpoints"],
-        icon: "⚡",
         color: "from-orange-400 to-orange-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -318,7 +301,6 @@ const Projects = () => {
         estimatedTime: "10-14 hours",
         technologies: ["Python", "Pandas", "Plotly", "Dash"],
         features: ["Data visualization", "Interactive charts", "Filtering", "Export reports"],
-        icon: "📈",
         color: "from-blue-400 to-blue-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -332,7 +314,6 @@ const Projects = () => {
         estimatedTime: "8-12 hours",
         technologies: ["Python", "TensorFlow", "Flask", "OpenCV"],
         features: ["Image upload", "Model prediction", "Confidence scores", "Web interface"],
-        icon: "🖼️",
         color: "from-indigo-400 to-indigo-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -346,7 +327,6 @@ const Projects = () => {
         estimatedTime: "6-10 hours",
         technologies: ["Python", "BeautifulSoup", "Requests", "SQLite"],
         features: ["Data extraction", "Multiple sites", "Data cleaning", "Database storage"],
-        icon: "🕷️",
         color: "from-gray-400 to-gray-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -360,7 +340,6 @@ const Projects = () => {
         estimatedTime: "15-20 hours",
         technologies: ["Python", "Pygame", "Sprite Animation"],
         features: ["Character movement", "Level design", "Enemy AI", "Power-ups"],
-        icon: "🎮",
         color: "from-teal-400 to-teal-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -374,7 +353,6 @@ const Projects = () => {
         estimatedTime: "10-15 hours",
         technologies: ["C++", "File I/O", "Data Structures"],
         features: ["Directory operations", "File management", "Search functionality", "Permissions"],
-        icon: "📁",
         color: "from-amber-400 to-amber-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -389,7 +367,6 @@ const Projects = () => {
         estimatedTime: "20-30 hours",
         technologies: ["React", "Firebase", "WebSocket", "Context API"],
         features: ["Real-time messaging", "User auth", "Chat rooms", "File sharing"],
-        icon: "💬",
         color: "from-red-400 to-red-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -402,7 +379,6 @@ const Projects = () => {
         estimatedTime: "25-35 hours",
         technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
         features: ["Team management", "Project tracking", "Time tracking", "File collaboration"],
-        icon: "🚀",
         color: "from-violet-400 to-violet-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -415,7 +391,6 @@ const Projects = () => {
         estimatedTime: "30-40 hours",
         technologies: ["React", "Video.js", "Cloud Storage", "Authentication"],
         features: ["Video upload", "Streaming", "User profiles", "Comments system"],
-        icon: "🎥",
         color: "from-emerald-400 to-emerald-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -428,7 +403,6 @@ const Projects = () => {
         estimatedTime: "35-45 hours",
         technologies: ["React", "Node.js", "Database", "Authentication"],
         features: ["Course creation", "Quiz system", "Progress tracking", "Certificate generation"],
-        icon: "🎓",
         color: "from-amber-400 to-amber-600",
         demoUrl: "#",
         githubUrl: "#"
@@ -442,7 +416,6 @@ const Projects = () => {
         estimatedTime: "25-35 hours",
         technologies: ["Python", "Nmap", "OpenVAS", "PostgreSQL"],
         features: ["Vulnerability detection", "Risk assessment", "Reporting", "Automated scanning"],
-        icon: "🛡️",
         color: "from-red-500 to-red-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -455,7 +428,6 @@ const Projects = () => {
         estimatedTime: "30-40 hours",
         technologies: ["Go", "Redis", "JWT", "Docker"],
         features: ["API authentication", "Rate limiting", "Request validation", "Logging"],
-        icon: "🚪",
         color: "from-purple-500 to-purple-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -469,7 +441,6 @@ const Projects = () => {
         estimatedTime: "40-50 hours",
         technologies: ["Kubernetes", "Docker", "Spring Boot", "RabbitMQ"],
         features: ["Service discovery", "Load balancing", "Monitoring", "CI/CD pipeline"],
-        icon: "🏗️",
         color: "from-orange-500 to-orange-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -483,7 +454,6 @@ const Projects = () => {
         estimatedTime: "35-45 hours",
         technologies: ["Apache Spark", "Kafka", "Elasticsearch", "Kibana"],
         features: ["Real-time processing", "Data pipelines", "Advanced analytics", "Interactive dashboards"],
-        icon: "📊",
         color: "from-blue-500 to-blue-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -497,7 +467,6 @@ const Projects = () => {
         estimatedTime: "30-40 hours",
         technologies: ["Python", "TensorFlow", "OpenCV", "CUDA"],
         features: ["Object detection", "Image recognition", "Real-time processing", "Model training"],
-        icon: "👁️",
         color: "from-indigo-500 to-indigo-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -511,7 +480,6 @@ const Projects = () => {
         estimatedTime: "35-45 hours",
         technologies: ["Python", "Dask", "Redis", "Docker"],
         features: ["Parallel processing", "Task scheduling", "Fault tolerance", "Scalability"],
-        icon: "🔗",
         color: "from-gray-500 to-gray-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -525,7 +493,6 @@ const Projects = () => {
         estimatedTime: "50-60 hours",
         technologies: ["C++", "OpenGL", "Bullet Physics", "SDL"],
         features: ["3D rendering", "Physics simulation", "Game systems", "Asset management"],
-        icon: "🎯",
         color: "from-teal-500 to-teal-700",
         demoUrl: "#",
         githubUrl: "#"
@@ -539,7 +506,6 @@ const Projects = () => {
         estimatedTime: "45-55 hours",
         technologies: ["C++", "B-Tree", "Memory Management", "Concurrency"],
         features: ["Database operations", "Indexing", "Transactions", "Query optimization"],
-        icon: "💾",
         color: "from-amber-500 to-amber-700",
         demoUrl: "#",
         githubUrl: "#"

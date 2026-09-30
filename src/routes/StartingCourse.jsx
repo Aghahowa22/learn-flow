@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import {
   House,
@@ -23,7 +23,7 @@ const StartingCourse = () => {
   const isCourseBuilder = selectedCategory === "coursebuilder";
   const isCalender = selectedCategory === "calender";
   // import useAuth from auth context
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   // useNavigate hook for back navigation
   const navigate = useNavigate();
 
@@ -347,12 +347,12 @@ const StartingCourse = () => {
                 Welcome to your new course! We're excited to have you on board.
                 we expect you to have a great learning experience. and spend a
                 lot of time learning and growing. at least 3 to 5 hours per day
-                coding and following our tutorial videos. people who code
-                daily tend to progress faster. as a beginner it is advisable to
-                start with html and css before moving on to more advanced courses
-                like JavaScript.you can always ask for help if you get stuck,
-                research and jot down notes while watching the videos. click any of
-                your enrolled course below to get started.
+                coding and following our tutorial videos. people who code daily
+                tend to progress faster. as a beginner it is advisable to start
+                with html and css before moving on to more advanced courses like
+                JavaScript.you can always ask for help if you get stuck,
+                research and jot down notes while watching the videos. click any
+                of your enrolled course below to get started.
               </p>
             </div>
             <div>
@@ -362,11 +362,8 @@ const StartingCourse = () => {
               <div className="bg-linear-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-blue-500 text-white p-2 rounded-full">
-                      🌐
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         HTML and CSS Mastery
                       </h4>
                       <p className="text-sm text-gray-600">
@@ -374,11 +371,11 @@ const StartingCourse = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right md:text-sm text-xs">
                     <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.8</span>
-                      <span className="text-gray-500">(1,250 students)</span>
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.8</span> */}
+                      <span className="text-gray-500 py-2">(1,250 students)</span>
                     </div>
                     <span className="text-green-600 font-bold">
                       by: Benochi Nosa
@@ -411,23 +408,20 @@ const StartingCourse = () => {
               <div className="bg-Linear-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-yellow-500 text-white p-2 rounded-full">
-                      JS
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         JavaScript Fundamentals
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="py-2 text-sm text-gray-600">
                         Programming • 6 weeks • Beginner
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-righ md:text-sm text-xs">
                     <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.9</span>
-                      <span className="text-gray-500">(890 students)</span>
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.9</span> */}
+                      <span className="text-gray-500 py-2">(890 students)</span>
                     </div>
                     <span className="text-green-600 font-bold">
                       by: Yuki Promise
@@ -460,23 +454,20 @@ const StartingCourse = () => {
               <div className="bg-Linear-to-r from-green-50 to-teal-50 border border-green-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-green-500 text-white p-2 rounded-full">
-                      🎨
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         UI/UX Design Principles
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="py-2 text-sm text-gray-600">
                         Design • 8 weeks • Beginner
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right md:text-sm text-xs">
                     <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.7</span>
-                      <span className="text-gray-500">(2,100 students)</span>
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.7</span> */}
+                      <span className="text-gray-500 py-2">(2,100 students)</span>
                     </div>
                     <span className="text-green-600 font-bold">
                       by: EraTech
@@ -509,23 +500,20 @@ const StartingCourse = () => {
               <div className="bg-Linear-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-indigo-500 text-white p-2 rounded-full">
-                      🗂️
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         Git and GitHub (Version Control)
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="py-2 text-sm text-gray-600">
                         Version Control • 6 weeks • Beginner
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right md:text-sm text-xs">
                     <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.6</span>
-                      <span className="text-gray-500">(1,500 students)</span>
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.6</span> */}
+                      <span className="text-gray-500 py-2">(1,500 students)</span>
                     </div>
                     <span className="text-green-600 font-bold">
                       by: Joshua Kroose
@@ -557,25 +545,22 @@ const StartingCourse = () => {
               <div className="bg-linear-to-r from-red-50 to-pink-50 border border-red-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-red-500 text-white p-2 rounded-full">
-                      ⚛️
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         Advanced React Development
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm py-2 text-gray-600">
                         Programming • 12 weeks • Beginner
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.5</span>
-                      <span className="text-gray-500">(900 students)</span>
+                  <div className="text-right md:text-sm text-xs">
+                    <div className="flex items-center space-x-1 mb-1 ">
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.5</span> */}
+                      <span className="text-gray-500 py-2">(900 students)</span>
                     </div>
-                    <span className="text-green-600 font-bold">
+                    <span className="text-green-600 font-bold ">
                       by: Amen Praise
                     </span>
                   </div>
@@ -606,23 +591,22 @@ const StartingCourse = () => {
               <div className="bg-linear-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-xl p-6 mb-6 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-cyan-500 text-white p-2 rounded-full">
-                      🛠️
-                    </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="md:text-xl text-lg font-semibold text-gray-800">
                         Node.js Backend Mastery
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 py-2">
                         Backend • 10 weeks • Intermediate
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="flex items-center space-x-1 mb-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-medium">4.8</span>
-                      <span className="text-gray-500">(1,200 students)</span>
+                  <div className="text-right md:text-sm text-xs">
+                    <div className="flex items-center space-x-1 mb-1 ">
+                      {/* <span className="text-yellow-500">⭐</span>
+                      <span className="font-medium">4.8</span> */}
+                      <span className="text-gray-500 py-2">
+                        (1,200 students)
+                      </span>
                     </div>
                     <span className="text-green-600 font-bold">
                       by: James Iyobosa
@@ -633,7 +617,7 @@ const StartingCourse = () => {
                   Learn Node.js backend development, Express, MongoDB, and build
                   scalable backend applications.
                 </p>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between ">
                   <div className="flex space-x-2">
                     <span className="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">
                       Node.js
@@ -644,7 +628,7 @@ const StartingCourse = () => {
                   </div>
                   <Link
                     to="/startingcourse/nodejsbackend"
-                    className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                    className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg font-medium transition-colors "
                   >
                     Start Course
                   </Link>
